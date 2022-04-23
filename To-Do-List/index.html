@@ -15,7 +15,7 @@
         function App(){
             const [toDo,setToDo] = React.useState("");
             const [state,setState] = React.useState([])
-
+            const [open,setOpen] = React.useState(true);
             const onChange = (e)=>{
                 setToDo(e.target.value);
             }
@@ -29,6 +29,10 @@
                     )
                 });
             }
+            const 
+            const close = ()=>{
+                setOpen(false)
+            }
             // console.log(toDo)
             return(
                 <div>
@@ -40,7 +44,7 @@
                     <hr />
                     <ul>
                         {state.map((item,index)=>(
-                            <li key={index}>{item}</li>
+                            open ? <li key={index}>{item}<button onClick={close}>&times;</button></li> : null
                         ))}
                     </ul>
                 </div>
