@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* .modal{
+        .modal{
             display: none;
             position:fixed;
             top:0;
@@ -15,10 +15,6 @@
             bottom:0;
             z-index:99;
             background-color: rgba(0,0,0,0.6);
-        } */
-        .modal{
-            background-color: rgba(0,0,0,0.6);
-            height: 100vh;
         }
         .modal button{
             /* outline: none; */
@@ -48,7 +44,11 @@
             font-weight: 700;
             /* text-align: center; */
             color:#999;
-            /* background-color: transparent; */
+            /* /* background-color: transparent;  */
+        }
+        .modal.active{
+            display: flex;
+            align-items: center;
         }
         .modal > section > main{
             padding: 16px;
@@ -78,7 +78,9 @@
             const Modal = (props) =>{
                 const {open,close,header} = props;
                 return(
-                    <div className="modal">
+                    <div className={open ? "modal active" : "modal"}>
+                        {
+                            open ? (                            
                             <section>
                                 <header>
                                     {header}
@@ -92,7 +94,8 @@
                                         close
                                     </button>
                                 </footer>
-                            </section>
+                            </section>) : null
+                        }
                     </div>
 
                 )
@@ -106,7 +109,6 @@
             const closeModal = ()=>{
                 setModalOpen(false);
             }
-            console.log(modalOpen)
             return(
                 <div>
                     <button onClick={openModal}>모달팝업</button>
