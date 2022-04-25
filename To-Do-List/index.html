@@ -15,7 +15,6 @@
         function App(){
             const [toDo,setToDo] = React.useState("");
             const [state,setState] = React.useState([])
-            const [open,setOpen] = React.useState(true);
             const onChange = (e)=>{
                 setToDo(e.target.value);
             }
@@ -23,17 +22,16 @@
             const onSubmit = (e)=>{
                 e.preventDefault();
                 setState((currentArray)=> {
-                    console.log(currentArray)
                     return(
                         [toDo,...currentArray]
                     )
                 });
             }
-            const 
-            const close = ()=>{
-                setOpen(false)
-            }
-            // console.log(toDo)
+
+            const deleteBtn = index => {
+                setState(state.filter((item, todoIndex) => index === todoIndex));
+            };
+
             return(
                 <div>
                     <h1>My To Dos</h1>
@@ -44,7 +42,7 @@
                     <hr />
                     <ul>
                         {state.map((item,index)=>(
-                            open ? <li key={index}>{item}<button onClick={close}>&times;</button></li> : null
+                            <li key={index}>{item} <button onClick={()=>deleteBtn(index)}>&times;</button></li>
                         ))}
                     </ul>
                 </div>
