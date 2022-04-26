@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+
+    function App() {
+    const [loading, setLoading] = React.useState(true);
+    const [coins, setCoins] = React.useState([]);
+    const [number, setNumber] = React.useState(0);
+    const [value,setValue] = React.useState(1)
+ 
+    React.useEffect(() => {
+        fetch("https://api.coinpaprika.com/v1/tickers?limit=10")
+            .then((response) => response.json())
+            .then((json) => setCoins(json));
+        setLoading(false);
+    }, [])
+
+    const onChange = (e) => {
+        setNumber(0);
+        setValue(e.target.value);
+    }
+    
+    const input_update = (e) => {
+        setNumber(e.target.value);
+        console.log(number)
+    }
+    return (
+        <div>
+            <h1>The Coins! {loading ? "" : `(${coins.length})`}</h1>
+            {loading ? (<strong>Loading...</strong>) : (
+                <select onChange={onChange}>
+                    <option>Select Coin!</option>
+                        {coins.map((coin) => (
+                            <option value={coin.quotes.USD.price}>
+                                {coin.name} ({coin.symbol}) : $ {coin.quotes.USD.price} USD
+                            </option>
+                        ))}
+                    </select>
+            )}
+            <hr />
+            <h1>Please enter the amount</h1>
+            <input style={{width:"350px",height:"50px",fontSize:"45px"}} value={number} onChange={input_update} type="number" placeholder="dollor"></input>
+            <h1>available for purchase</h1>
+            <h3 style={{fontSize:"50px"}}>{number/value}</h3>
+        </div>
+        
+    );
+}
+
+        const app = document.querySelector('#app');
+        ReactDOM.render(<App />,app);
+    </script>
+</body>
+</html>
