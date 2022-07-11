@@ -1,5 +1,5 @@
 # React 문법
-### <JSX>
+### JSX
 
 JavaSript + XML
 
@@ -12,7 +12,7 @@ JavaSript + XML
 
 ※ 위 title변수에 담은 h1 태그는 리액트 엘리먼트라고 부른다.
 
-### <Babel>
+### Babel
 
 최신 문법을 브라우저가 이해할 수 있는 JavaScript로 통역
 
@@ -26,7 +26,7 @@ React : const title = <h1>안녕</h1>
 Babel : const title = React.createElement(’h1’,null,’안녕’)이래요
 브라우저 : 아하!
 
-### <리액트 코드 브라우저에 그리기>
+### 리액트 코드 브라우저에 그리기
 
 빈 HTML 공간에 React 때려박기
 
@@ -39,7 +39,7 @@ const myButton = <button>버튼</button>`
 
 `ReactDOM.render(myButton,target)`
 
-### <컴포넌트>
+### component
 
 여기저기 재사용 가능한 UI 코드 조각
 
@@ -62,7 +62,7 @@ const myButton = <button>버튼</button>`
 
 `}`
 
-### <스타일링>
+### 스타일링
 
 리액트에 CSS 끼얹기
 
@@ -72,7 +72,7 @@ const myButton = <button>버튼</button>`
 <div className = “danger”>위험</div>
 <div style = {{color : ‘red’}}>위험</div>
 
-### <이벤트>
+### 이벤트
 
 사용자 이벤트(클릭,스크롤 등) 다루기
 
@@ -89,7 +89,7 @@ const myButton = <button>버튼</button>`
 
 `<button onClick = {handleClick}>제출</button>`
 
-### <상태>
+### 상태
 
 컴포넌트 안에서 자유롭게 변경할 값이 필요할 때
 
@@ -107,7 +107,7 @@ const myButton = <button>버튼</button>`
 
 return <button onClick = {카운터증가}>카운터는 {counter}</button>
 
-### <리스트>
+### 리스트
 
 배열로 반복되는 UI그리기
 
@@ -122,7 +122,7 @@ return <button onClick = {카운터증가}>카운터는 {counter}</button>
 
 `</ul>`
 
-### <폼>
+### 폼
 
 사용자 입력 다루기
 
@@ -137,7 +137,7 @@ setValue(e.target.value);
 <button type="submit">제출</button>
 </form>`
 
-### <로컬스토리지(리액트 문법이 아니다,브라우저 기능이다)>
+### 로컬스토리지(리액트 문법이 아니다,브라우저 기능이다)
 
 브라우저에 데이터 저장하기
 
@@ -148,7 +148,7 @@ localStorage.setItem(’이름’,’유림’)
 
 localStorage.getItem(’이름’) //유림
 
-## **<create-react-app>**
+## **create-react-app**
 
 리액트 초기 개발에 필요한 모든 것을 자동으로 해준다.
 
