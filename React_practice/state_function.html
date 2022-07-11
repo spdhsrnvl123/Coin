@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+</body>
+<script src = "https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src = "https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script type ="text/babel">
+    const root = document.getElementById("root");
+    function App(){
+        let [counter,setCounter] = React.useState(0);
+        const onClick = ()=>{
+            // setCounter(counter+1);
+            setCounter((current) => current + 1);
+            //아래쪽이 더 안전->리액트가 current가 확실히 현재 값이라는걸 보장.
+        }
+        console.log("rendered");
+        // console.log(counter);
+        return(
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={onClick}>Click me</button>
+            </div>
+        );
+    }
+    ReactDOM.render(<App />,root);
+</script>
+</html>
+
+<!-- 
+setCounter()에 값으로 넣을지 함수로 넣어줄지가 헷갈리신다면,
+onClick 함수안에 여러번 넣어서 테스트해보시면 이해가 빠를 것 같습니다.
+
+1. 값으로 여러번
+function onClick() {
+setCounter(counter + 1);
+setCounter(counter + 1);
+setCounter(counter + 1);
+setCounter(counter + 1);
+setCounter(counter + 1);
+}
+
+2. 함수로 여러번
+function onClick() {
+setCounter(current => current+ 1);
+setCounter(current => current+ 1);
+setCounter(current => current+ 1);
+setCounter(current => current+ 1);
+setCounter(current => current+ 1);
+}
+
+1번으로 돌렸을 경우에는 setCounter를 몇번을 호출해도 한 번만 실행되는 걸 보실 수 있고(counter가 1만 증가)
+2번으로 돌렸을 경우에는 setCounter가 호출된 만큼 counter가 증가된 걸 볼 수 있습니다.
+ -->

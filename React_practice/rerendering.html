@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+</body>
+<script src = "https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src = "https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script type ="text/babel">
+    const root = document.getElementById("root");
+
+    let counter = 10;
+    function countUp(){
+        counter = counter +1;
+        render();
+    }
+
+    function render(){
+        ReactDOM.render(<Container />,root);
+    }
+    //리액트 랜더링 함수. ->선호하지 않는 방식(계속 호출되기 때문에)
+
+    function Container(){
+        return(
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={countUp}>Click me</button>
+            </div>
+        );
+    }
+    render();
+</script>
+</html>
