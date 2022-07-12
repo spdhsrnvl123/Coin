@@ -37,7 +37,7 @@
                     <input type="number" id="mintes" value={inverted?num*60:num} placeholder="0" onChange={onChange} disabled={inverted} />
                     <br />
                     <label>hours</label>
-                    <input type="number" id="hours" value={inverted?num:num/60} onChange={onChange} placeholder="0" disabled={!inverted} />
+                    <input type="number" id="hours" value={inverted?num:num/60} placeholder="0" onChange={onChange}  disabled={!inverted} />
                     <br />
                     <button onClick={reset}>Reset</button>
                     <button onClick={real}>turn</button>
