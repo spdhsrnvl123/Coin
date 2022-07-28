@@ -20,6 +20,5 @@ root.render(
       <App />
     </ThemeProvider>
   </QueryClientProvider>
-
   //   </React.StrictMode>
 );

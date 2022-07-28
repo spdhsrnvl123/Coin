@@ -44,3 +44,5 @@ https://api.coinpaprika.com/#operation/getTickersById
 # JSON데이터를 타입스크립트 타입으로 빠르게 변환시켜주는 사이트<br />
 
 https://app.quicktype.io/?l=ts
+
+# react-query
