@@ -78,7 +78,7 @@ function Coins() {
   //   const [coins, setCoins] = useState<CoinInterface[]>([]);
   //   const [loading, setLoading] = useState(true); //loading state
   //   //원한다면 Loader component추가
-
+  console.log(data);
   //   useEffect(() => {
   //     (async () => {
   //       const response = await fetch("https://api.coinpaprika.com/v1/coins");
