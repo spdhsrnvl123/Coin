@@ -9,8 +9,15 @@ export function fetchCoinInfo(coinId: string) {
     response.json()
   );
 }
+
 export function fetchCoinTickers(coinId: string) {
   return fetch(`${BASE_URL}/tickers/${coinId}`).then((response) =>
     response.json()
   );
+}
+
+export async function chartupdate(coinId: string) {
+  return await (
+    await fetch(`https://ohlcv-api.nomadcoders.workers.dev/?coinId=${coinId}`)
+  ).json();
 }
