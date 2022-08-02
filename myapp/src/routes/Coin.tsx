@@ -14,6 +14,7 @@ import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Chart from "./Chart";
 import Price from "./Price";
 import { Helmet } from "react-helmet-async";
+import { title } from "process";
 
 const Title = styled.h1`
   font-size: 48px;
@@ -57,6 +58,8 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  width: 100%;
 `;
 
 const Tabs = styled.div`
@@ -79,6 +82,16 @@ const Tab = styled.span<{ isActive: boolean }>`
   a {
     display: block;
   }
+`;
+
+const HomeButton = styled.button`
+  font-size: 28px;
+  color: white;
+  border: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 // interface RouteParams {
@@ -178,29 +191,10 @@ function Coin() {
     ["tickers", coinId],
     () => fetchCoinTickers(coinId),
     {
-      refetchInterval: 5000,
+      //   refetchInterval: 5000,
     }
   );
-
-  //     const [loading, setLoading] = useState(true);
-  //     const [info, setInfo] = useState<InfoData>(); //info는 빈 객체로 인식한다.
-  //     const [priceInfo, setPriceInfo] = useState<PriceData>(); //priceInfo는 빈 객체로 인식한다.
-  //     useEffect(() => {
-  //         (async () => {
-  //             const infoData = await axios(
-  //                 `https://api.coinpaprika.com/v1/coins/${coinId}`
-  //                 );
-  //       //   console.log(infoData.data);
-
-  //       const priceData = await axios(
-  //         `https://api.coinpaprika.com/v1/tickers/${coinId}`
-  //       );
-  //       //   console.log(priceData.data);
-  //       setInfo(infoData.data);
-  //       setPriceInfo(priceData.data);
-  //       setLoading(false);
-  //     })();
-  //   }, [coinId]);
+  //   console.log(tickersData);
 
   const loading = infoLoading || tickersLoading;
   return (
@@ -214,6 +208,15 @@ function Coin() {
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
+        <HomeButton>
+          <Link to="/">
+            <img
+              width="28px"
+              alt="profile"
+              src={`${process.env.PUBLIC_URL}/assets/Home.png`}
+            />
+          </Link>
+        </HomeButton>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>

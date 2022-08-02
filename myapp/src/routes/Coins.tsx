@@ -96,7 +96,9 @@ function Coins() {
         <title>코인</title>
       </Helmet>
       <Header>
-        <Title>코인</Title>
+        <Title>
+          <Link to="/">코인</Link>
+        </Title>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
