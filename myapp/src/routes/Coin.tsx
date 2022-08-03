@@ -140,7 +140,7 @@ interface InfoData {
   last_data_at: string;
 }
 
-interface PriceData {
+export interface PriceData {
   id: string;
   name: string;
   symbol: string;
@@ -180,8 +180,6 @@ function Coin() {
   const priceMatch = useMatch("/:coinId/price");
   const chartMatch = useMatch("/:coinId/chart");
 
-  //   console.log(state);
-
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
     ["info", coinId],
     () => fetchCoinInfo(coinId) //argument가 필요하기 때문에
@@ -191,10 +189,9 @@ function Coin() {
     ["tickers", coinId],
     () => fetchCoinTickers(coinId),
     {
-      //   refetchInterval: 5000,
+      refetchInterval: 5000,
     }
   );
-  //   console.log(tickersData);
 
   const loading = infoLoading || tickersLoading;
   return (
@@ -243,7 +240,7 @@ function Coin() {
               <span>{tickersData?.total_supply}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Max Supply:</span>
+              <span>Max Supply: </span>
               <span>{tickersData?.max_supply}</span>
             </OverviewItem>
           </Overview>
@@ -257,7 +254,15 @@ function Coin() {
           </Tabs>
           <Routes>
             <Route path="chart" element={<Chart coinId={coinId} />} />
-            <Route path="price" element={<Price />} />
+            <Route
+              path="price"
+              element={<Price tickersData={tickersData!} />}
+              /*
+                '!'연산자는 컴파일에게 "tickersData는 무조건 값이 할당되어
+                걱정 말고 사용하면 된다."라고 주장한다.
+                https://developer-talk.tistory.com/191
+              */
+            />
           </Routes>
         </>
       )}
