@@ -11,7 +11,6 @@ const Container = styled.div`
 const Content = styled.div`
   padding: 10px 0px;
 `;
-
 const Price = ({ tickersData }: { tickersData: PriceData }) => {
   // {}:{} 알아보기
   const t_q_USD = tickersData.quotes.USD;
