@@ -94,7 +94,7 @@ function Coins() {
 
     <Container>
       <Helmet>
-        <title>코인</title>
+        <Link to="/">코인</Link>
       </Helmet>
       <Header>
         <Title>
