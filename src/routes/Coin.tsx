@@ -12,6 +12,8 @@ import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Chart from "./Chart";
 import Price from "./Price";
 import { Helmet } from "react-helmet-async";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 const Title = styled.h1`
   font-size: 48px;
@@ -82,6 +84,27 @@ const Tab = styled.span<{ isActive: boolean }>`
     display: block;
   }
 `;
+const NavigationContainer = styled.div`
+  position:fixed;
+  top:90px;
+  left:25px;
+`
+
+const NavigationBorder = styled.div`
+  width:55px;
+  height:55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props)=>props.theme.ItemBgColor};
+  color: ${(props)=>props.theme.IconColor};
+  &:hover{
+    font-size:24px;
+    transition: all 0.1s;
+  }
+  cursor: pointer;
+`
 
 interface LocationParams {
   state: {
@@ -197,6 +220,13 @@ function Coin() {
         <Loader>Loading...</Loader>
       ) : (
         <>
+        <Link to="/">
+        <NavigationContainer>
+          <NavigationBorder>
+            <FontAwesomeIcon icon={faHouse} size ="lg"></FontAwesomeIcon>
+          </NavigationBorder>
+        </NavigationContainer>
+        </Link>
           <Overview>
             <OverviewItem>
               <span>Rank:</span>
