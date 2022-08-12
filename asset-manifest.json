@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/Coin/static/js/main.ba4e32c8.js",
+    "main.js": "/Coin/static/js/main.5b85b6fb.js",
     "index.html": "/Coin/index.html",
-    "main.ba4e32c8.js.map": "/Coin/static/js/main.ba4e32c8.js.map"
+    "main.5b85b6fb.js.map": "/Coin/static/js/main.5b85b6fb.js.map"
   },
   "entrypoints": [
-    "static/js/main.ba4e32c8.js"
+    "static/js/main.5b85b6fb.js"
   ]
 }
