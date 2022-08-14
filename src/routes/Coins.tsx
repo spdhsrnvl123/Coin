@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import { fetchCoins } from "../api";
-import { Helmet } from "react-helmet";
+import {useQuery} from "@tanstack/react-query"
+// import { useState } from "react";
+// import { fetchCoins } from "../api";
+// import { Helmet } from "react-helmet";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -14,9 +14,6 @@ const Container = styled.div`
 `
 
 //다크모드,차트
-
-
-
 
 const Header = styled.header`
   height: 15vh;
@@ -81,21 +78,23 @@ async랑 await이랑 다른 많은 것들을 사용하고 싶으니
 
 멋진 트릭 : 그 자리에서 function을 excute(실행)할 수 있다.
 */
+const BASE_URL = `https://api.coinpaprika.com/v1`;
 
-interface GreetingsProps{
-  iconChange:boolean;
+function fetchCoins(){
+  return fetch(`${BASE_URL}/coins`).then((response)=>response.json())
 }
 
-function Coins() {
+console.log(fetchCoins())
 
-  const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins);
+function Coins() {
+  const {isLoading,data} = useQuery<ICoin[]>(["allCoins"],fetchCoins)
+  console.log(isLoading)
   return (
     <>
-
     <Container>
-      <Helmet>
-        <Link to="/">코인</Link>
-      </Helmet>
+      {/* <Helmet> */}
+        {/* <Link to="/">코인</Link> */}
+      {/* </Helmet> */}
       <Header>
         <Title>
           <Link to="/">World Coin List</Link>

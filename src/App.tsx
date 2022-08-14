@@ -1,10 +1,10 @@
 import styled, { createGlobalStyle } from "styled-components";
 import Router from "./Router";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { HelmetProvider } from "react-helmet-async";
+// import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "styled-components";
 import { darktheme,whitetheme } from "./Theme";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon,faSun } from '@fortawesome/free-solid-svg-icons'
 
@@ -106,7 +106,7 @@ function App() {
     <>
     <ThemeProvider theme={iconChange ? darktheme : whitetheme}>
       <GlobalStyle />
-      <HelmetProvider>
+      {/* <HelmetProvider> */}
         <NavigationContainer onClick={()=>toggleButton()}>
           <NavigationBorder>
             {
@@ -115,7 +115,7 @@ function App() {
           </NavigationBorder>
         </NavigationContainer>
         <Router/>
-      </HelmetProvider>
+      {/* </HelmetProvider> */}
       <ReactQueryDevtools initialIsOpen={true} />
     </ThemeProvider>
 

@@ -11,7 +11,7 @@ import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Chart from "./Chart";
 import Price from "./Price";
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
@@ -204,11 +204,11 @@ function Coin() {
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
-      <Helmet>
+      {/* <Helmet> */}
         <title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </title>
-      </Helmet>
+      {/* </Helmet> */}
       <Header>
         <Link to="/">
         <Title>
