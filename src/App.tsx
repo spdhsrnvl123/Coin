@@ -77,8 +77,10 @@ const NavigationContainer = styled.div`
   position:fixed;
   top:25px;
   left:25px;
+  z-index: 99;
   @media screen and (max-width: 650px) {
-    display: none;
+    top:10px;
+    left:10px;
 }
 `
 
@@ -89,6 +91,7 @@ const NavigationBorder = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 2rem;
   background-color: ${(props)=>props.theme.ItemBgColor};
   color: ${(props)=>props.theme.IconColor};
   &:hover{
@@ -96,6 +99,16 @@ const NavigationBorder = styled.div`
     transition: all 0.1s;
   }
   cursor: pointer;
+  @media screen and (max-width: 550px) {
+    width:1.8em;
+    height: 1.8em;
+    font-size: 1.5rem;
+  }
+  @media screen and (max-width: 500px) {
+    width:1.8em;
+    height: 1.8em;
+    font-size: 1rem;
+  }
 `
 function App() {
 
@@ -113,7 +126,7 @@ function App() {
         <NavigationContainer onClick={()=>toggleButton()}>
           <NavigationBorder>
             {
-            iconChange ? <FontAwesomeIcon icon={faMoon} size="2x" /> : <FontAwesomeIcon icon={faSun} size="2x"></FontAwesomeIcon> 
+            iconChange ? <FontAwesomeIcon icon={faMoon}/> : <FontAwesomeIcon icon={faSun}></FontAwesomeIcon> 
             }
           </NavigationBorder>
         </NavigationContainer>
