@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
 import {useQuery} from "@tanstack/react-query"
 // import { useState } from "react";
-// import { fetchCoins } from "../api";
+import { fetchCoins } from "../api";
 // import { Helmet } from "react-helmet";
 
 const Container = styled.div`
@@ -22,12 +22,19 @@ const Header = styled.header`
   align-items: center;
 `;
 
-const CoinsList = styled.ul``;
+const CoinsList = styled.ul`
+`;
 
 const Title = styled.h1`
   font-size: 52px;
   font-weight: 900;
   color: ${(props) => props.theme.titleColor};
+  @media screen and (max-width: 650px) {
+    font-size:46px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size:36px;
+  }
 `;
 
 const Loader = styled.span`
@@ -78,13 +85,7 @@ async랑 await이랑 다른 많은 것들을 사용하고 싶으니
 
 멋진 트릭 : 그 자리에서 function을 excute(실행)할 수 있다.
 */
-const BASE_URL = `https://api.coinpaprika.com/v1`;
 
-function fetchCoins(){
-  return fetch(`${BASE_URL}/coins`).then((response)=>response.json())
-}
-
-console.log(fetchCoins())
 
 function Coins() {
   const {isLoading,data} = useQuery<ICoin[]>(["allCoins"],fetchCoins)

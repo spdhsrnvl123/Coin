@@ -77,6 +77,9 @@ const NavigationContainer = styled.div`
   position:fixed;
   top:25px;
   left:25px;
+  @media screen and (max-width: 650px) {
+    display: none;
+}
 `
 
 const NavigationBorder = styled.div`
