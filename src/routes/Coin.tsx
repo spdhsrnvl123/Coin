@@ -18,6 +18,15 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.titleColor};
+  @media screen and (max-width: 650px) {
+    font-size:46px;
+  }
+  @media screen and (max-width: 520px) {
+    font-size:36px;
+  }
+  @media screen and (max-width: 440px) {
+    font-size:24px;
+  }
 `;
 
 const Container = styled.div`
@@ -86,22 +95,34 @@ const Tab = styled.span<{ isActive: boolean }>`
 `;
 const NavigationContainer = styled.div`
   position:fixed;
-  top:90px;
-  left:25px;
+  top:20px;
+  right:20px;
+  z-index: 99;
 `
 
 const NavigationBorder = styled.div`
-  width:55px;
-  height:55px;
+  width:2.3em;
+  height:2.3em;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
   background-color: ${(props)=>props.theme.ItemBgColor};
   color: ${(props)=>props.theme.IconColor};
-  &:hover{
+  /* &:hover{
     font-size:24px;
     transition: all 0.1s;
+  } */
+  @media screen and (max-width:550px) {
+    font-size: 1.1rem;
+    width:2.2em;
+    height: 2.3em;
+  }
+  @media screen and (max-width:360px) {
+    font-size: 0.7rem;
+    width:2.3em;
+    height: 2.3em;
   }
   cursor: pointer;
 `
@@ -205,9 +226,9 @@ function Coin() {
   return (
     <Container>
       {/* <Helmet> */}
-        <title>
+        {/* <title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-        </title>
+        </title> */}
       {/* </Helmet> */}
       <Header>
         <Link to="/">
