@@ -75,18 +75,14 @@ a{
 `;
 const NavigationContainer = styled.div`
   position:fixed;
-  top:25px;
-  left:25px;
+  top:20px;
+  left:20px;
   z-index: 99;
-  @media screen and (max-width: 650px) {
-    top:10px;
-    left:10px;
-}
 `
 
 const NavigationBorder = styled.div`
-  width:55px;
-  height:55px;
+  width:1.8em;
+  height:1.8em;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -94,21 +90,21 @@ const NavigationBorder = styled.div`
   font-size: 2rem;
   background-color: ${(props)=>props.theme.ItemBgColor};
   color: ${(props)=>props.theme.IconColor};
-  &:hover{
+  /* &:hover{
     font-size:24px;
     transition: all 0.1s;
+  } */
+  @media screen and (max-width:550px) {
+    font-size: 1.5rem;
+    width:1.8em;
+    height: 1.8em;
+  }
+  @media screen and (max-width:360px) {
+    font-size: 1rem;
+    width:1.8em;
+    height: 1.8em;
   }
   cursor: pointer;
-  @media screen and (max-width: 550px) {
-    width:1.8em;
-    height: 1.8em;
-    font-size: 1.5rem;
-  }
-  @media screen and (max-width: 500px) {
-    width:1.8em;
-    height: 1.8em;
-    font-size: 1rem;
-  }
 `
 function App() {
 

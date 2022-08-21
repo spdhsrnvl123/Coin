@@ -32,11 +32,11 @@ const Title = styled.h1`
   @media screen and (max-width: 650px) {
     font-size:46px;
   }
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 520px) {
     font-size:36px;
   }
-  @media screen and (max-width: 410px) {
-    font-size:26px;
+  @media screen and (max-width: 440px) {
+    font-size:24px;
   }
 `;
 
