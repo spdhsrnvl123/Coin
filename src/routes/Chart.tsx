@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCoinHistory } from "../api";
 import ApenxChart from "react-apexcharts";
 import { faBlackboard } from "@fortawesome/free-solid-svg-icons";
+import { useRecoilValue } from "recoil";
+import { isDark } from "../atoms";
 
 interface ChartProps {
   coinId: string;
@@ -29,6 +31,7 @@ const Chart = ({ coinId }: ChartProps) => {
     y : [value.open,value.high,value.low,value.close]
   }))
 
+  const toggle = useRecoilValue(isDark)
 
   return (<div>
     {isLoading ? "Loading chart..." : (
@@ -42,6 +45,9 @@ const Chart = ({ coinId }: ChartProps) => {
         ] as unknown as number[]
       }
         options = {{
+          theme:{
+            mode:toggle ? "dark":"light"
+          },
           chart:{
             height: 400,
             width:500,

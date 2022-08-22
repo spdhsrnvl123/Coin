@@ -13,7 +13,12 @@ import Chart from "./Chart";
 import Price from "./Price";
 // import { Helmet } from "react-helmet-async";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faHouse,faMoon,faSun } from '@fortawesome/free-solid-svg-icons'
+import {NavigationContainer} from "./Coins";
+import { NavigationBorder } from "./Coins";
+import { isDark } from "../atoms";
+import { useSetRecoilState } from "recoil";
+
 
 const Title = styled.h1`
   font-size: 48px;
@@ -93,14 +98,14 @@ const Tab = styled.span<{ isActive: boolean }>`
     display: block;
   }
 `;
-const NavigationContainer = styled.div`
+const NavigationContainerHome = styled.div`
   position:fixed;
   top:20px;
   right:20px;
   z-index: 99;
 `
 
-const NavigationBorder = styled.div`
+const NavigationBorderHome = styled.div`
   width:2.3em;
   height:2.3em;
   border-radius: 50%;
@@ -222,14 +227,15 @@ function Coin() {
     }
   );
 
+  const iconChange = useSetRecoilState(isDark)
+
+  const toggeleDarkAtom = ()=>{
+    iconChange((prev)=>!prev)
+  }
+
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
-      {/* <Helmet> */}
-        {/* <title>
-          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-        </title> */}
-      {/* </Helmet> */}
       <Header>
         <Link to="/">
         <Title>
@@ -241,12 +247,19 @@ function Coin() {
         <Loader>Loading...</Loader>
       ) : (
         <>
-        <Link to="/">
-        <NavigationContainer>
+          <NavigationContainer onClick={toggeleDarkAtom} >
           <NavigationBorder>
-            <FontAwesomeIcon icon={faHouse} size ="lg"></FontAwesomeIcon>
+            {
+            isDark ? <FontAwesomeIcon icon={faMoon}/> : <FontAwesomeIcon icon={faSun}></FontAwesomeIcon> 
+            }
           </NavigationBorder>
         </NavigationContainer>
+        <Link to="/">
+        <NavigationContainerHome>
+          <NavigationBorderHome>
+            <FontAwesomeIcon icon={faHouse} size ="lg"></FontAwesomeIcon>
+          </NavigationBorderHome>
+        </NavigationContainerHome>
         </Link>
           <Overview>
             <OverviewItem>

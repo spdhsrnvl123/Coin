@@ -1,12 +1,11 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "styled-components";
 import { darktheme,whitetheme } from "./Theme";
-import { useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon,faSun } from '@fortawesome/free-solid-svg-icons'
+import { useRecoilValue } from "recoil";
+import { isDark } from "./atoms";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -73,61 +72,14 @@ a{
     color:inherit
 }
 `;
-const NavigationContainer = styled.div`
-  position:fixed;
-  top:20px;
-  left:20px;
-  z-index: 99;
-`
 
-const NavigationBorder = styled.div`
-  width:1.8em;
-  height:1.8em;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  background-color: ${(props)=>props.theme.ItemBgColor};
-  color: ${(props)=>props.theme.IconColor};
-  /* &:hover{
-    font-size:24px;
-    transition: all 0.1s;
-  } */
-  @media screen and (max-width:550px) {
-    font-size: 1.5rem;
-    width:1.8em;
-    height: 1.8em;
-  }
-  @media screen and (max-width:360px) {
-    font-size: 1rem;
-    width:1.8em;
-    height: 1.8em;
-  }
-  cursor: pointer;
-`
 function App() {
-
-  const [iconChange,setIconChange] = useState(true);
-  
-  function toggleButton(){
-    setIconChange((current)=>!current)
-  }
-
+  const iconChange = useRecoilValue(isDark)
   return (
     <>
     <ThemeProvider theme={iconChange ? darktheme : whitetheme}>
       <GlobalStyle />
-      {/* <HelmetProvider> */}
-        <NavigationContainer onClick={()=>toggleButton()}>
-          <NavigationBorder>
-            {
-            iconChange ? <FontAwesomeIcon icon={faMoon}/> : <FontAwesomeIcon icon={faSun}></FontAwesomeIcon> 
-            }
-          </NavigationBorder>
-        </NavigationContainer>
         <Router/>
-      {/* </HelmetProvider> */}
       <ReactQueryDevtools initialIsOpen={true} />
     </ThemeProvider>
 

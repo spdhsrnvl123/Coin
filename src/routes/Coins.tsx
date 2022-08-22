@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-// import { useEffect, useState } from "react";
 import {useQuery} from "@tanstack/react-query"
-// import { useState } from "react";
 import { fetchCoins } from "../api";
-// import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon,faSun } from '@fortawesome/free-solid-svg-icons'
+import { useSetRecoilState } from "recoil";
+import { isDark } from "../atoms";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -70,6 +71,40 @@ const Coin = styled.li`
   }
 `;
 
+export const NavigationContainer = styled.div`
+  position:fixed;
+  top:20px;
+  left:20px;
+  z-index: 99;
+`
+
+export const NavigationBorder = styled.div`
+  width:1.8em;
+  height:1.8em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  background-color: ${(props)=>props.theme.ItemBgColor};
+  color: ${(props)=>props.theme.IconColor};
+  /* &:hover{
+    font-size:24px;
+    transition: all 0.1s;
+  } */
+  @media screen and (max-width:550px) {
+    font-size: 1.5rem;
+    width:1.8em;
+    height: 1.8em;
+  }
+  @media screen and (max-width:360px) {
+    font-size: 1rem;
+    width:1.8em;
+    height: 1.8em;
+  }
+  cursor: pointer;
+`
+
 interface ICoin {
   id: string;
   name: string;
@@ -89,16 +124,25 @@ async랑 await이랑 다른 많은 것들을 사용하고 싶으니
 멋진 트릭 : 그 자리에서 function을 excute(실행)할 수 있다.
 */
 
-
 function Coins() {
-  const {isLoading,data} = useQuery<ICoin[]>(["allCoins"],fetchCoins)
-  console.log(isLoading)
+  const {isLoading,data} = useQuery<ICoin[]>(["allCoins"],fetchCoins);
+  
+  const iconChange = useSetRecoilState(isDark)
+
+  const toggeleDarkAtom = ()=>{
+    iconChange((prev)=>!prev)
+  }
+
   return (
     <>
     <Container>
-      {/* <Helmet> */}
-        {/* <Link to="/">코인</Link> */}
-      {/* </Helmet> */}
+      <NavigationContainer onClick={toggeleDarkAtom}>
+          <NavigationBorder>
+            {
+            isDark ? <FontAwesomeIcon icon={faMoon}/> : <FontAwesomeIcon icon={faSun}></FontAwesomeIcon> 
+            }
+          </NavigationBorder>
+        </NavigationContainer>
       <Header>
         <Title>
           <Link to="/">World Coin List</Link>
