@@ -1,4 +1,6 @@
-<h1>COIN</h1>
+# 🪙 COIN
+
+![coin](https://user-images.githubusercontent.com/83896466/214843826-cf62d8e6-5703-462b-beac-6371578b3444.gif)
 
 ## 🚀 배포 (netlify)
 🔗 https://spdhsrnvl123.github.io/Coin/
@@ -37,5 +39,4 @@
 - [x] 홈 화면 바로가기 구현
 - [x] APEXCHARTS 라이브러리를 이용하여 차트 구현
 
-<br>
 
